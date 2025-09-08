@@ -1,8 +1,8 @@
-name: Backend CD on develop branch
+name: Backend CD on main branch
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -98,16 +98,16 @@ jobs:
         id: docker_build
         with:
           context: .
-          file: ./lv3-final-config/dev/Dockerfile
+          file: ./lv3-final-config/prod/Dockerfile
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ env.OWNER_LC }}/lv3-final-spring-dev:latest
-            ghcr.io/${{ env.OWNER_LC }}/lv3-final-spring-dev:dev-${{ github.run_number }}
+            ghcr.io/${{ env.OWNER_LC }}/lv3-final-spring-prod:latest
+            ghcr.io/${{ env.OWNER_LC }}/lv3-final-spring-prod:prod-${{ github.run_number }}
 
   deploy-on-ec2:
-    name: Deploy on EC2 (dev environment)
-    runs-on: [ self-hosted, dev ]
+    name: Deploy on EC2 (prod environment)
+    runs-on: [ self-hosted, prod ]
     needs: test-and-push-docker-image
 
     steps:
@@ -126,17 +126,17 @@ jobs:
 
       # 최신 docker 이미지 pull
       - name: Pull docker images
-        run: docker compose -f lv3-final-config/dev/docker-compose.yml pull
+        run: docker compose -f lv3-final-config/prod/docker-compose.yml pull
         working-directory: ${{ github.workspace }}
 
       # 기존 컨테이너 종료 및 제거
       - name: Stop and Remove Old Containers
-        run: docker compose -f lv3-final-config/dev/docker-compose.yml down
+        run: docker compose -f lv3-final-config/prod/docker-compose.yml down
         working-directory: ${{ github.workspace }}
 
       # 새 docker 컨테이너 실행
       - name: Start Containers
-        run: docker compose -f lv3-final-config/dev/docker-compose.yml up -d
+        run: docker compose -f lv3-final-config/prod/docker-compose.yml up -d
         working-directory: ${{ github.workspace }}
 
       # dangling 이미지(아무 태그도 붙어 있지 않은 이미지) 삭제
