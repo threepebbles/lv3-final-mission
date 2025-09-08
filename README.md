@@ -23,6 +23,6 @@
   - `lv3-final-prod.courseitda.me/swagger-ui/index.html`
 - [x] 전체 인프라를 다이어그램으로 작성하고 각 구성요소 역할을 설명해야 한다. 
   - ![AWS 네트워크 구성도.jpg](imgs%2FAWS%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EA%B5%AC%EC%84%B1%EB%8F%84.jpg)
-  - Nginx를 이용하여 HTTP 요청을 HTTPS로 리다이렉트, HTTPS 요청을 EC2 내부 스프링앱(8080포트)로 연결
-  - dev는 실험 환경이므로, 접근이 쉬운 Docker 컨테이너로 실행한 DB를 사용한다.
-  - prod는 실제 서비스 환경이므로, 보안 위협이 적은 private subnet에 위치시기코, 스냅샷/롤백 기능/AZ 문제 발생 시 장애 대응 등 가용성이 높은 기능을 제공해주는 RDS를 사용한다.
+  - Nginx를 이용하여 HTTP 요청을 HTTPS로 리다이렉트, HTTPS 요청을 EC2 내부 스프링 앱(8080포트)으로 연결
+  - dev는 실험 환경이므로, 자유도 높고 접근이 쉬운 Docker 컨테이너로 실행한 DB를 사용한다.
+  - prod는 실제 서비스 환경이므로, 보안 위협이 적은 private subnet에 위치시키고, 스냅샷/롤백 기능/AZ 문제 발생 시 장애 대응 등 가용성이 높은 기능을 제공해주는 RDS를 사용한다.
