@@ -127,17 +127,14 @@ jobs:
       # 최신 docker 이미지 pull
       - name: Pull docker images
         run: docker compose -f lv3-final-config/dev/docker-compose.yml pull
-        working-directory: ${{ github.workspace }}
 
       # 기존 컨테이너 종료 및 제거
       - name: Stop and Remove Old Containers
         run: docker compose -f lv3-final-config/dev/docker-compose.yml down
-        working-directory: ${{ github.workspace }}
 
       # 새 docker 컨테이너 실행
       - name: Start Containers
         run: docker compose -f lv3-final-config/dev/docker-compose.yml up -d
-        working-directory: ${{ github.workspace }}
 
       # dangling 이미지(아무 태그도 붙어 있지 않은 이미지) 삭제
       - name: Cleanup old docker images
