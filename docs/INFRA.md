@@ -59,5 +59,5 @@ develop/main 브랜치에 변경이 발생하면 워크플로우가 트리거되
 
 - 스프링 앱 빌드에 성공하면, Docker 이미지로 패키징하여 GitHub Container Registry에 저장합니다.
 - GitHub Container Registry에 저장되는 Docker 이미지는 push된 순서대로 버저닝되고 있습니다. (ex. `prod-1`, `prod-2`, `prod-3`) 이미지 버저닝은 롤백을 용이하게 하기 위함입니다.
-- private submodule을 이용해서 민감한 secret을 관리합니다.
+- private submodule을 이용해서 API 키, DB 계정 정보 등 민감한 secret을 관리합니다.
 - GitHub Actions의 self-hosted runner를 사용하여, EC2 환경에 자동 배포 및 애플리케이션 실행을 수행합니다.
