@@ -20,7 +20,7 @@
 - 서버 자원(CPU·메모리·네트워크 등)을 지표·대시보드로 시각화해야 한다.
 - 운영 중 스키마 변경 시 데이터 보존 상태로 마이그레이션 및 재배포를 완료해야 한다.
 - [x] 제공 API의 문서 명세를 작성·공개해야 한다.
-  - `lv3-final-prod.courseitda.me/swagger-ui/html`
+  - `lv3-final-prod.courseitda.me/swagger-ui/index.html`
 - [x] 전체 인프라를 다이어그램으로 작성하고 각 구성요소 역할을 설명해야 한다. 
   - ![AWS 네트워크 구성도.jpg](imgs%2FAWS%20%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%20%EA%B5%AC%EC%84%B1%EB%8F%84.jpg)
   - Nginx를 이용하여 HTTP 요청을 HTTPS로 리다이렉트, HTTPS 요청을 EC2 내부 스프링앱(8080포트)로 연결
