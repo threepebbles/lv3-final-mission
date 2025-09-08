@@ -1,0 +1,3 @@
+[submodule "lv3-final-config"]
+    path = lv3-final-config
+    url = https://github.com/threepebbles/lv3-final-config.git
