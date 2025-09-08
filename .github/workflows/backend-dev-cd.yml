@@ -120,6 +120,9 @@ jobs:
           recursive: true
           token: ${{ secrets.PAT_FOR_SUBMODULE }}
 
+      - name: Check application-dev.yml
+        run: ls -l $GITHUB_WORKSPACE/lv3-final-config/dev/application-dev.yml
+
       # GHCR 로그인
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.PAT_FOR_GHCR }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
